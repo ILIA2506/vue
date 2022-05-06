@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Новый урок </title>
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+    <body>
+        <!-- вот именно тут будет работать vue приложение -->
+        <div id="application">
+            <input type="text" v-model="userInput">
+            <!-- как выводить значение переменной из data -->
+            <!-- интерполяция текста -->
+            <p>1. {{ userInput }}</p>
+            <!-- интерполяция текста: значения свойств или валидное js выражение -->
+            <!-- результаты этой работы должны возвращать значение, тогда результаты успешно отобразятся в html -->
+            <p>2. {{ userInput.length < 1 ? "Вы ничего не ввели" : userInput }}</p>
+            <!-- для сложной логики, включающей реактивные свойства, правильно использовать вычисляемые свойства -->
+            <p>3. {{ userOutput }}</p>
+
+            <!-- интерполяция html -->
+            <p v-html = "userHtmlOutput"></p>
+
+            <article>
+                <h3>{{ book.title.toUpperCase() }}</h3>
+                <p>Автор: {{ book.author }} </p>
+                <ol>
+                    <!-- <li>{{ book.otherAuthors[0] }}</li>
+                    <li>{{ book.otherAuthors[1] }}</li> -->
+                    <li v-for="author in book.otherAuthors">
+                        {{author}}
+                    </li>
+                </ol>
+                <!-- привязка атрибутов -->
+                <img v-bind:src="book.img" v-bind:alt="book.title">
+                <!-- привязка атрибутов.сокращенный вариант -->
+                <img :src="book.img" :alt="book.title">
+
+
+
+            </article>
+        </div>
+        
+        <script src = "js/lesson1.1.js"></script>
+    </body>
+</html>
+
+
+        <!-- Императивный подход
+        let a = 3;
+        let b = 4;
+
+        Let c = a + b;
+        console.log(c); // 7
+
+        a = 100;
+        console.log(c); // 7
+
+        Реактивный подход в программировании (как во Vue)
+        let a = 3;
+        let b = 4;
+
+        Let c = a + b;
+        console.log(c); // 7
+
+        a = 100;
+        console.log(c); // 104
+
+        для обеспечения реативности:
+        во 2ой версии vue используется паттерн 'Наблюдатель'
+        в 3ей версии используется объект Proxy, который предоставляется js
+
+
+        Шаблон проектирования MVVM
+        View (html) - ViewModel - Model (данные js) -->
+        
