@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+    <body>
+        <div id="homework1">
+            <article v-for="cat in cats" id="article">
+                <h3>{{ cat.name }}</h3>
+                <ol>
+                    <li>{{ cat.age }}</li>
+                    <li>{{ cat.color }}</li>
+                </ol>
+                <img :src="cat.img" alt="картинка">
+            </article>
+            <!-- <article>
+                <h3></h3>
+                <ol>
+                    <li></li>
+                    <li></li>
+                </ol>
+                <img :src :alt="картинка">
+            </article>
+            <article>
+                <h3></h3>
+                <ol>
+                    <li></li>
+                    <li></li>
+                </ol>
+                <img :src :alt="картинка">
+            </article> -->
+        </div>
+        <script src = "js/hw1.js"></script>
+    </body>
+</html>

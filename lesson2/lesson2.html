@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Урок №2 </title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+<!-- { имя класса1: условие, при котором класс будет добавлен -->
+<!--   имя класса2: условие, при котором класс будет добавлен } -->
+
+<!-- v-on:имяСобытия="дейсвтия"  -->
+<!-- @имяСобытия:имяСобытия="действия" -->
+
+<div id="app" class="container">
+    <span class="tab"
+     :class="{active: title === currentTab}" 
+     v-for="title in tabTitles"
+     v-on:click="currentTab = title">
+            {{ title.toUpperCase() }}
+    </span>
+
+    <!-- условная отрисовка v-if(v-else-if ... v-else) / v-show -->
+    <section v-if="currentTab === 'Все книги'">
+        <div  v-for="book in books">
+            <h3>{{ book.title }}</h3>
+            <div class="book__info">
+                <span class="book__description">{{ book.description }}</span>
+                <img class="book__image" :src="`img/${book.cover}`" :alt="book.cover">
+            </div>
+            <button v-on:click="book.inList ? deleteFromList(book) : addToList(book)" class="book__button"> {{book.inList ? 'Удалить из списка' : 'Добавить в список'}} </button>
+        </div>
+            <!-- Первый вариант -->
+            <!-- Второй вариант -->
+            <!-- <button class="book__button" v-if="book.inList"> Удалить из списка </button>
+            <button class="book__button" v-else> Добавить в список </button> -->
+    </section>
+    <section v-show="currentTab === 'Мой список'">
+        <!-- элемент всегда отрисуется, но если условие не выполняется, то он будет скрыт через display: "none" -->
+        <h2 v-if="!sortedByTitle.length"> Вы не добавили ни одной книги </h2>
+        <div v-else>
+            <h2> Мой список </h2>
+            <div class="user-list__book" v-for="book in sortedByTitle">
+                <h3 class="user-list__title">{{ book.title }}</h3>
+                <button class="book__button" @click="deleteFromList(book)"> Удалить из списка </button>
+            </div>
+        </div>
+    </section>  
+    
+</div>
+
+<script src="js/lesson2.js"></script>
+</body>
+</html>
