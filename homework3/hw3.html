@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://unpkg.com/vue@next"></script>
+        <title> Домашнее задание №3 </title>
+    </head>
+    <body>
+    <div id="homework3">
+        <input v-model="inputName" type="text" placeholder="Введите текст, человек">
+        <!-- <div>
+            <h2 v-for="article in nameTitle">{{article.title}}</h2>
+        </div> -->
+
+        <div>
+            <h2 v-for="article in nameTitle">
+                <span v-if="article.title.includes(inputName)" >{{article.title}}</span>
+            </h2>
+        </div>
+    </div>
+        <script src = "js/hw3.js"></script>
+    </body>
+
+</html>
