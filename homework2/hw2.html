@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://unpkg.com/vue@next"></script>
+        <title> Домашнее задание №2 </title>
+    </head>
+    <body>
+        <div id="homework2" v-for="good in sortedByCount">
+            <article v-for="good in goods" id="article">
+                <h3>{{ good.title }}</h3>
+                <span>{{ `${good.price} руб.` }}</span>
+            </article>
+        </div>
+    </body>
+    <footer>
+        <script src = "js/hw2.js"></script>
+    </footer>
+</html>
